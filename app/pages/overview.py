@@ -6,36 +6,20 @@ from ui.state import get_retriever, provider, corpus_docs, settings
 # ---------------------------------------------------------
 # Hero
 # ---------------------------------------------------------
-st.markdown(
-    textwrap.dedent(
-        """
-        <div class="ec-hero">
-            <span class="tag">OPEN RESEARCH PROTOTYPE · NLP · RAG</span>
 
-            <h1>Can NLP help detect unsupported claims in AI answers?</h1>
+st.markdown("""
+<div class='ec-hero'>
+  <span class='tag'>OPEN RESEARCH PROTOTYPE · NLP · RAG</span>
+  <h1>Can NLP help detect unsupported claims in AI answers?</h1>
+  <p>EvidenceCheck breaks an LLM answer into individual claims and
+                  checks each claim against retrieved evidence to identify what is
+                  supported, partly supported, or unsupported.</p>
+  <div class='ec-flow'><b>Retrieve</b><i>→</i><b>Generate</b><i>→</i><b>Extract claims</b><i>→</i><b>Verify</b><i>→</i><b>Score</b></div>
+</div>""", unsafe_allow_html=True)
+a, b, _ = st.columns([1.2, 1.2, 3])
+a.page_link("pages/evaluate.py", label="Run an evaluation", icon=":material/play_arrow:")
+b.page_link("pages/documents.py", label="Add documents", icon=":material/upload_file:")
 
-            <p>
-                EvidenceCheck breaks an LLM answer into individual claims and
-                checks each claim against retrieved evidence to identify what is
-                supported, partly supported, or unsupported.
-            </p>
-
-            <div class="ec-flow">
-                <b>Retrieve</b>
-                <i>→</i>
-                <b>Generate</b>
-                <i>→</i>
-                <b>Extract Claims</b>
-                <i>→</i>
-                <b>Verify</b>
-                <i>→</i>
-                <b>Measure</b>
-            </div>
-        </div>
-        """
-    ),
-    unsafe_allow_html=True,
-)
 
 # ---------------------------------------------------------
 # Main actions
