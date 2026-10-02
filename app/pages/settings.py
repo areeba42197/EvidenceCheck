@@ -1,7 +1,6 @@
 import streamlit as st
 from ui.state import settings, provider
 from ui.components import render_page_header
-from evidencecheck.config import env_file
 from evidencecheck.generation.providers import ProviderError
 
 s = settings()
@@ -23,7 +22,7 @@ st.subheader("LLM")
 s.llm_provider = st.selectbox("Provider", ["gemini", "groq"], index=["gemini", "groq"].index(s.llm_provider if s.llm_provider in ("gemini", "groq") else "gemini"))
 if s.llm_provider == "gemini":
     s.gemini_model = st.text_input("Gemini model", s.gemini_model)
-    st.caption("Free tier covers Flash / Flash-Lite models only and is rate-limited. Free-tier prompts may be used by Google to improve its products, so don't send confidential documents. Key: aistudio.google.com/apikey → `GEMINI_API_KEY` in .env.")
+    
 else:
     s.groq_model = st.text_input("Groq model", s.groq_model)
 st.caption(f"`.env` path: `{env_file()}` · exists: {env_file().is_file()}")
@@ -31,9 +30,9 @@ with st.expander("Use your own API key (optional)"):
     k = st.text_input(f"{s.llm_provider.title()} API key (this session only, not saved)", type="password",
                       value=st.session_state.get(f"key_{s.llm_provider}", ""))
     st.session_state[f"key_{s.llm_provider}"] = k.strip().strip("\"'")
-    st.caption("If left empty, the key from `.env` or Streamlit Secrets is used.")
+    st.caption("If left empty, the app's built-in key is used.")
 p = provider()
-src = "your session key" if st.session_state.get(f"key_{s.llm_provider}") else ("server key (.env / Secrets)" if p.configured else "none")
+src = "your session key" if st.session_state.get(f"key_{s.llm_provider}") else ("built-in key" if p.configured else "none")
 st.markdown(f"Provider: **{s.llm_provider}** · API key detected: **{'Yes' if p.configured else 'No'}** · source: {src}")
 if st.button("Test connection"):
     try:
