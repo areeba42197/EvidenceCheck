@@ -1,37 +1,88 @@
 # EvidenceCheck
-Evidence-based hallucination detection and reliability evaluation for Retrieval-Augmented Generation. A research prototype: it estimates whether generated claims are supported by retrieved evidence, not whether they are true.
 
-**Research question:** How reliably can evidence-based claim verification identify unsupported claims in RAG systems? (RQ1-RQ4 in `docs/`.)
-**Contribution:** an evaluation framework and verification pipeline, not a new model.
+**Evidence-Based Reliability Checking for LLM-Generated Answers**
 
-Pipeline: Retrieve → Generate → Extract Claims → Verify → Measure.
-Stack: Python 3.11+, Groq (free tier), sentence-transformers (MiniLM), FAISS, Streamlit. Cost: $0.
+EvidenceCheck is an NLP research prototype that evaluates whether claims made in AI-generated answers are supported by relevant evidence.
+
+The system combines **Retrieval-Augmented Generation (RAG)** with claim-level verification to analyze an answer beyond simply treating it as correct or incorrect.
+
+### How It Works
+
+```text
+Question → Retrieve Evidence → Generate Answer
+                              ↓
+                 Extract Claims → Verify
+                              ↓
+             Supported / Partial / Unsupported
+```
+
+EvidenceCheck retrieves relevant passages, generates an answer using an LLM, breaks the answer into individual claims, and checks each claim against the available evidence.
+
+### Research Focus
+
+The project explores:
+
+* Whether retrieved evidence improves the reliability of LLM answers
+* Whether claim-level verification can identify unsupported claims
+* How retrieval settings affect reliability
+* Which types of claims are harder to verify
+
+### Technology
+
+**Python · FAISS · Sentence Transformers · Groq · PyTorch · Streamlit**
 
 ## Setup
+
+Create a virtual environment and install the dependencies:
+
 ```bash
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env   # set GROQ_API_KEY (never commit)
+python -m venv .venv
 ```
-## Run
+
+**Windows:**
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+**Install dependencies:**
+
+```bash
+pip install -r requirements.txt
+```
+
+Add your Groq API key to `.env`:
+
+```env
+GROQ_API_KEY=your_api_key
+GROQ_MODEL=llama-3.3-70b-versatile
+```
+
+## Usage
+
+Add your source documents to:
+
+```text
+data/raw/
+```
+
+Then build the document index:
+
+```bash
+python scripts/ingest_documents.py
+python scripts/build_index.py
+```
+
+Start the application:
+
 ```bash
 streamlit run app/streamlit_app.py
-python scripts/ingest_documents.py && python scripts/build_index.py
-python scripts/run_evaluation.py                          # offline: needs gold labels
-python scripts/run_experiments.py --experiment baseline   # also top-k, chunk-size (needs Groq)
-pytest -q tests
 ```
-Add documents to `data/raw/`; questions and gold labels go in `data/evaluation/` (see `data/README.md`).
 
-## Results
-Not evaluated yet. No dataset or gold labels are included; metrics show N/A until you add them.
+Open the local Streamlit URL shown in the terminal and use **Evaluate** to submit a question and inspect the generated answer, claims, evidence, and verification results.
 
-## Limitations
-See `docs/limitations.md`. Similarity thresholds are project-defined; the reliability score is not a truth guarantee.
+### Important Note
 
-## Deployment (Streamlit Community Cloud)
-1. Push the repo to GitHub (`.env` and `.streamlit/secrets.toml` are gitignored).
-2. share.streamlit.io → New app → main file `app/streamlit_app.py` → Advanced settings: **Python 3.12**.
-3. Paste into Secrets: `GEMINI_API_KEY = "..."` (see `.streamlit/secrets.toml.example`).
-4. Every page works online: Metrics and Threshold Sensitivity run live without an LLM; Experiments run on demand; Error Analysis cases are logged in-app (download to keep).
-Notes: the server key is shared by all visitors (free-tier rate limits apply); visitors can use their own key under Configuration. Disk is ephemeral, so results persist per session. Free-tier Gemini content may be used by Google to improve products. Demo URL: _not deployed yet_.
+EvidenceCheck measures whether a claim is **supported by the evidence available to the system**. It does not guarantee that a claim is universally true.
+
+**Status:** Research Prototype
