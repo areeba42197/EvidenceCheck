@@ -1,7 +1,10 @@
 import streamlit as st
+import os
 from ui.state import settings, provider
 from ui.components import render_page_header
 from evidencecheck.generation.providers import ProviderError
+
+groq_configured = bool(os.getenv("GROQ_API_KEY")) 
 
 s = settings()
 render_page_header("Configuration", "Set your LLM provider and API key, then tune retrieval and verification.")
@@ -25,7 +28,7 @@ if s.llm_provider == "gemini":
     
 else:
     s.groq_model = st.text_input("Groq model", s.groq_model)
-st.caption(f"`.env` path: `{env_file()}` · exists: {env_file().is_file()}")
+st.caption(f"Groq API key: {'Configured' if groq_configured else 'Not configured'}")
 with st.expander("Use your own API key (optional)"):
     k = st.text_input(f"{s.llm_provider.title()} API key (this session only, not saved)", type="password",
                       value=st.session_state.get(f"key_{s.llm_provider}", ""))
