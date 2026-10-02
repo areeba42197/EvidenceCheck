@@ -16,28 +16,7 @@ st.markdown("""
                   supported, partly supported, or unsupported.</p>
   <div class='ec-flow'><b>Retrieve</b><i>→</i><b>Generate</b><i>→</i><b>Extract claims</b><i>→</i><b>Verify</b><i>→</i><b>Score</b></div>
 </div>""", unsafe_allow_html=True)
-a, b, _ = st.columns([1.2, 1.2, 3])
-a.page_link("pages/evaluate.py", label="Run an evaluation", icon=":material/play_arrow:")
-b.page_link("pages/documents.py", label="Add documents", icon=":material/upload_file:")
 
-
-# ---------------------------------------------------------
-# Main actions
-# ---------------------------------------------------------
-
-a, b, _ = st.columns([1.2, 1.2, 3])
-
-a.page_link(
-    "pages/evaluate.py",
-    label="Try an evaluation",
-    icon=":material/play_arrow:",
-)
-
-b.page_link(
-    "pages/documents.py",
-    label="Add documents",
-    icon=":material/upload_file:",
-)
 
 
 # ---------------------------------------------------------
@@ -232,58 +211,25 @@ for col, (ok, title, detail, page, label) in zip(
 # Explore
 # ---------------------------------------------------------
 
-st.subheader("Explore the Research")
-
-explore = [
-    (
-        "Evaluate",
-        "Run a question through the full claim verification pipeline.",
-        "pages/evaluate.py",
-        ":material/play_arrow:",
-    ),
-    (
-        "Experiments",
-        "Compare RAG configurations and retrieval settings.",
-        "pages/experiments.py",
-        ":material/science:",
-    ),
-    (
-        "Claims",
-        "Inspect individual claims and their verification results.",
-        "pages/claims.py",
-        ":material/fact_check:",
-    ),
-    (
-        "Evidence",
-        "Read the passages used to support or challenge each claim.",
-        "pages/evidence.py",
-        ":material/search:",
-    ),
-    (
-        "Methodology",
-        "Understand the research methodology and evaluation approach.",
-        "pages/methodology.py",
-        ":material/menu_book:",
-    ),
-    (
-        "Error Analysis",
-        "Explore where retrieval, generation, or verification can fail.",
-        "pages/error_analysis.py",
-        ":material/bug_report:",
-    ),
+st.subheader("What each page does")
+cards = [
+    ("Documents", "Pick sample docs or upload your own (.txt, .md, .pdf).", "pages/documents.py", ":material/folder:"),
+    ("Evaluate", "Ask a question, get an answer and a claim-by-claim reliability score.", "pages/evaluate.py", ":material/fact_check:"),
+    ("Claims", "Browse and filter every claim by verdict and type.", "pages/claims.py", ":material/list:"),
+    ("Evidence", "Read the exact passages retrieved for the answer.", "pages/evidence.py", ":material/search:"),
+    ("Experiments", "Compare direct LLM vs RAG, top-k and chunk size.", "pages/experiments.py", ":material/science:"),
+    ("Metrics", "Recall@K, precision and claim F1 against gold labels.", "pages/metrics.py", ":material/monitoring:"),
+    ("Error Analysis", "Reviewed failure cases grouped by category.", "pages/error_analysis.py", ":material/bug_report:"),
+    ("Methodology", "How verdicts and the reliability score are computed.", "pages/methodology.py", ":material/menu_book:"),
+    ("Configuration", "LLM provider, API key, retrieval and thresholds.", "pages/settings.py", ":material/tune:"),
 ]
 
-for i in range(0, len(explore), 3):
-    cols = st.columns(3)
-
-    for col, (title, description, page, icon) in zip(
-        cols,
-        explore[i : i + 3],
-    ):
+for i in range(0, len(cards), 3):
+    for col, (t, d, page, icon) in zip(st.columns(3), cards[i:i + 3]):
         with col.container(border=True):
-            st.markdown(f"**{title}**")
-            st.caption(description)
+            st.markdown(f"**{t}**  \n<span class='ec-mono'>{d}</span>", unsafe_allow_html=True)
             st.page_link(page, label="Open", icon=icon)
+st.caption("Verdicts estimate whether claims are supported by retrieved text. They do not establish factual truth.")
 
 
 # ---------------------------------------------------------
