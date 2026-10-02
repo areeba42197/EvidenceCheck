@@ -1,0 +1,6 @@
+EvidenceCheck is a research prototype that evaluates whether claims in language model answers are supported by retrieved evidence.
+Documents are split into overlapping chunks of characters. The default chunk size is 500 characters with an overlap of 100 characters.
+Chunks are embedded locally with a sentence transformer model and stored in a FAISS vector index.
+At query time the retriever returns the top-k chunks ranked by cosine similarity. The default value of k is 3.
+The generated answer is split into atomic claims. Each claim is compared with its retrieved evidence and labelled supported, partially supported, or unsupported.
+The reliability score is the number of supported claims divided by the number of verifiable claims.

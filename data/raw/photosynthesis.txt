@@ -1,0 +1,4 @@
+Photosynthesis is the process by which plants, algae and some bacteria convert light energy into chemical energy. In plants it takes place in chloroplasts.
+Using light, carbon dioxide and water, photosynthesis produces glucose and releases oxygen.
+Chlorophyll is the main pigment involved. It absorbs mostly blue and red light and reflects green light, which is why leaves look green.
+The light-dependent reactions occur in the thylakoid membranes. The Calvin cycle, which fixes carbon dioxide into sugars, occurs in the stroma.

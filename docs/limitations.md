@@ -1,0 +1,2 @@
+# Limitations
+1. Semantic similarity does not guarantee truth. 2. The verifier can make mistakes. 3. Retrieval quality limits verification. 4. Atomic claim extraction is imperfect. 5. Multi-hop claims are hard. 6. Numerical claims need specialised verification. 7. Thresholds (0.75/0.55) are project-defined. 8. The reliability score is not a measure of factual truth. 9. Groq free-tier rate limits constrain large experiments. 10. Human evaluation is needed for stronger validation.

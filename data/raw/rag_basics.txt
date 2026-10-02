@@ -1,0 +1,4 @@
+Retrieval-Augmented Generation (RAG) combines a language model with a search step. Before answering, the system retrieves passages from a document collection and gives them to the model as context.
+RAG can reduce unsupported statements because the model is instructed to answer from the retrieved passages. It does not eliminate hallucination: the model can still add details that the passages do not contain.
+Retrieval quality matters. If the retriever returns irrelevant passages, the answer may be wrong or unsupported even when the model follows its instructions.
+A vector index such as FAISS stores embeddings of text chunks and returns the chunks closest to a query embedding.

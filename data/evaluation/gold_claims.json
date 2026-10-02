@@ -1,0 +1,155 @@
+[
+ {
+  "claim_id": "c001",
+  "question_id": "q001",
+  "claim": "Python was created by Guido van Rossum.",
+  "label": "SUPPORTED",
+  "evidence_source": "python_language",
+  "evidence_text": "Python is a high-level, general-purpose programming language created by Guido van Rossum and first released in 1991.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c002",
+  "question_id": "q001",
+  "claim": "Python was first released in 1991.",
+  "label": "SUPPORTED",
+  "evidence_source": "python_language",
+  "evidence_text": "Python is a high-level, general-purpose programming language created by Guido van Rossum and first released in 1991.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c003",
+  "question_id": "q001",
+  "claim": "Python was first released in 1989.",
+  "label": "UNSUPPORTED",
+  "evidence_source": "python_language",
+  "evidence_text": "Python is a high-level, general-purpose programming language created by Guido van Rossum and first released in 1991.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c004",
+  "question_id": "q002",
+  "claim": "PEP 8 is the official style guide for Python code.",
+  "label": "SUPPORTED",
+  "evidence_source": "python_language",
+  "evidence_text": "PEP 8 is the official style guide for Python code. PEP stands for Python Enhancement Proposal.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c005",
+  "question_id": "q002",
+  "claim": "PEP 8 was written in 2001.",
+  "label": "UNSUPPORTED",
+  "evidence_source": "python_language",
+  "evidence_text": "No passage in the sample documents states this.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c006",
+  "question_id": "q003",
+  "claim": "Photosynthesis in plants takes place in chloroplasts.",
+  "label": "SUPPORTED",
+  "evidence_source": "photosynthesis",
+  "evidence_text": "Photosynthesis is the process by which plants, algae and some bacteria convert light energy into chemical energy. In plants it takes place in chloroplasts.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c007",
+  "question_id": "q003",
+  "claim": "Photosynthesis in plants takes place in the mitochondria.",
+  "label": "UNSUPPORTED",
+  "evidence_source": "photosynthesis",
+  "evidence_text": "Photosynthesis is the process by which plants, algae and some bacteria convert light energy into chemical energy. In plants it takes place in chloroplasts.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c008",
+  "question_id": "q003",
+  "claim": "Photosynthesis occurs in chloroplasts and requires oxygen as an input.",
+  "label": "PARTIALLY_SUPPORTED",
+  "evidence_source": "photosynthesis",
+  "evidence_text": "Using light, carbon dioxide and water, photosynthesis produces glucose and releases oxygen.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c009",
+  "question_id": "q004",
+  "claim": "Leaves look green because chlorophyll reflects green light.",
+  "label": "SUPPORTED",
+  "evidence_source": "photosynthesis",
+  "evidence_text": "Chlorophyll is the main pigment involved. It absorbs mostly blue and red light and reflects green light, which is why leaves look green.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c010",
+  "question_id": "q004",
+  "claim": "Chlorophyll absorbs mostly blue and red light.",
+  "label": "SUPPORTED",
+  "evidence_source": "photosynthesis",
+  "evidence_text": "Chlorophyll is the main pigment involved. It absorbs mostly blue and red light and reflects green light, which is why leaves look green.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c011",
+  "question_id": "q005",
+  "claim": "RAG reduces unsupported statements but does not eliminate hallucination.",
+  "label": "SUPPORTED",
+  "evidence_source": "rag_basics",
+  "evidence_text": "RAG can reduce unsupported statements because the model is instructed to answer from the retrieved passages. It does not eliminate hallucination: the model can still add details that the passages do not contain.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c012",
+  "question_id": "q005",
+  "claim": "RAG guarantees that every answer is correct.",
+  "label": "UNSUPPORTED",
+  "evidence_source": "rag_basics",
+  "evidence_text": "RAG can reduce unsupported statements because the model is instructed to answer from the retrieved passages. It does not eliminate hallucination: the model can still add details that the passages do not contain.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c013",
+  "question_id": "q006",
+  "claim": "A vector index such as FAISS returns the chunks closest to a query embedding.",
+  "label": "SUPPORTED",
+  "evidence_source": "rag_basics",
+  "evidence_text": "A vector index such as FAISS stores embeddings of text chunks and returns the chunks closest to a query embedding.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c014",
+  "question_id": "q006",
+  "claim": "FAISS stores embeddings and returns nearest chunks ranked by Euclidean distance.",
+  "label": "PARTIALLY_SUPPORTED",
+  "evidence_source": "rag_basics",
+  "evidence_text": "A vector index such as FAISS stores embeddings of text chunks and returns the chunks closest to a query embedding.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c015",
+  "question_id": "q007",
+  "claim": "The default chunk size is 500 characters.",
+  "label": "SUPPORTED",
+  "evidence_source": "evidencecheck_overview",
+  "evidence_text": "The default chunk size is 500 characters with an overlap of 100 characters.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c016",
+  "question_id": "q007",
+  "claim": "The default chunk size is 1000 characters.",
+  "label": "UNSUPPORTED",
+  "evidence_source": "evidencecheck_overview",
+  "evidence_text": "The default chunk size is 500 characters with an overlap of 100 characters.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ },
+ {
+  "claim_id": "c017",
+  "question_id": "q008",
+  "claim": "The reliability score is supported claims divided by verifiable claims.",
+  "label": "SUPPORTED",
+  "evidence_source": "evidencecheck_overview",
+  "evidence_text": "The reliability score is the number of supported claims divided by the number of verifiable claims.",
+  "note": "Demo label: authored against the bundled sample documents; not independent human annotation."
+ }
+]

@@ -1,0 +1,66 @@
+[
+ {
+  "id": "q001",
+  "question": "When was Python first released and who created it?",
+  "expected_topic": "python_language",
+  "reference_answer": "Python was created by Guido van Rossum and first released in 1991.",
+  "source_document": "python_language",
+  "synthetic": true
+ },
+ {
+  "id": "q002",
+  "question": "What is PEP 8?",
+  "expected_topic": "python_language",
+  "reference_answer": "PEP 8 is the official style guide for Python code.",
+  "source_document": "python_language",
+  "synthetic": true
+ },
+ {
+  "id": "q003",
+  "question": "Where does photosynthesis take place in plants?",
+  "expected_topic": "photosynthesis",
+  "reference_answer": "In chloroplasts.",
+  "source_document": "photosynthesis",
+  "synthetic": true
+ },
+ {
+  "id": "q004",
+  "question": "Why do leaves look green?",
+  "expected_topic": "photosynthesis",
+  "reference_answer": "Chlorophyll reflects green light.",
+  "source_document": "photosynthesis",
+  "synthetic": true
+ },
+ {
+  "id": "q005",
+  "question": "Does RAG eliminate hallucination?",
+  "expected_topic": "rag_basics",
+  "reference_answer": "No, it can reduce but not eliminate hallucination.",
+  "source_document": "rag_basics",
+  "synthetic": true
+ },
+ {
+  "id": "q006",
+  "question": "What does a vector index like FAISS do?",
+  "expected_topic": "rag_basics",
+  "reference_answer": "It stores embeddings and returns the chunks closest to a query embedding.",
+  "source_document": "rag_basics",
+  "synthetic": true
+ },
+ {
+  "id": "q007",
+  "question": "What is the default chunk size in EvidenceCheck?",
+  "expected_topic": "evidencecheck_overview",
+  "reference_answer": "500 characters with an overlap of 100.",
+  "source_document": "evidencecheck_overview",
+  "synthetic": true
+ },
+ {
+  "id": "q008",
+  "question": "How is the reliability score computed?",
+  "expected_topic": "evidencecheck_overview",
+  "reference_answer": "Supported claims divided by verifiable claims.",
+  "source_document": "evidencecheck_overview",
+  "synthetic": true
+ }
+]
